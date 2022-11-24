@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/Azure/go-amqp"
-	"github.com/amenzhinsky/iothub/common"
+	"github.com/nagyp11/iothub/common"
 )
 
 // FromAMQPMessage converts a amqp.Message into common.Message.

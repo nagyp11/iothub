@@ -18,9 +18,9 @@ import (
 	"time"
 
 	"github.com/Azure/go-amqp"
-	"github.com/amenzhinsky/iothub/common"
-	"github.com/amenzhinsky/iothub/eventhub"
-	"github.com/amenzhinsky/iothub/logger"
+	"github.com/nagyp11/iothub/common"
+	"github.com/nagyp11/iothub/eventhub"
+	"github.com/nagyp11/iothub/logger"
 )
 
 // ClientOption is a client configuration option.

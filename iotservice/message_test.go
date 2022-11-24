@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/amenzhinsky/iothub/common"
+	"github.com/nagyp11/iothub/common"
 )
 
 func TestToFromAMQPMessage(t *testing.T) {
