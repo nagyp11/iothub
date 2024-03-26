@@ -151,6 +151,21 @@ func (c *Client) Connect(ctx context.Context) error {
 	return err
 }
 
+// IsConnected forwards true if transport is connected
+func (c *Client) IsConnected() (bool, error) {
+	if c.tr == nil {
+		return false, errors.New("transport is not available")
+	}
+	return c.tr.IsConnected()
+}
+
+func (c *Client) IsConnectionOpen() (bool, error) {
+	if c.tr == nil {
+		return true, errors.New("transport is not available")
+	}
+	return c.tr.IsConnectionOpen()
+}
+
 // ErrClosed the client is already closed.
 var ErrClosed = errors.New("closed")
 

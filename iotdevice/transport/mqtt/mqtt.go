@@ -21,6 +21,7 @@ import (
 )
 
 var ErrNotImplemented = errors.New("not implemented")
+var ErrNotConnected = errors.New("not connected")
 
 // DefaultQoS is the default quality of service value.
 const DefaultQoS = 1
@@ -179,6 +180,20 @@ func (tr *Transport) Connect(ctx context.Context, creds transport.Credentials) e
 	tr.did = creds.GetDeviceID()
 	tr.conn = c
 	return nil
+}
+
+func (tr *Transport) IsConnected() (bool, error) {
+	if tr.conn == nil {
+		return false, ErrNotConnected
+	}
+	return tr.conn.IsConnectionOpen(), nil
+}
+
+func (tr *Transport) IsConnectionOpen() (bool, error) {
+	if tr.conn == nil {
+		return false, ErrNotConnected
+	}
+	return tr.conn.IsConnectionOpen(), nil
 }
 
 type subFunc func() error
@@ -532,7 +547,7 @@ func (tr *Transport) send(ctx context.Context, topic string, qos int, b []byte) 
 	tr.mu.RLock()
 	if tr.conn == nil {
 		tr.mu.RUnlock()
-		return errors.New("not connected")
+		return ErrNotConnected
 	}
 	tr.mu.RUnlock()
 	return contextToken(ctx, tr.conn.Publish(topic, byte(qos), false, b))
