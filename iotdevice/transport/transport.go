@@ -15,6 +15,8 @@ import (
 type Transport interface {
 	SetLogger(logger logger.Logger)
 	Connect(ctx context.Context, creds Credentials) error
+	IsConnected() (bool, error)
+	IsConnectionOpen() (bool, error)
 	Send(ctx context.Context, msg *common.Message) error
 	RegisterDirectMethods(ctx context.Context, mux MethodDispatcher) error
 	SubscribeEvents(ctx context.Context, mux MessageDispatcher) error

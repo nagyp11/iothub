@@ -97,6 +97,14 @@ func (tr *Transport) Connect(ctx context.Context, creds transport.Credentials) e
 	return nil
 }
 
+func (tr *Transport) IsConnected() (bool, error) {
+	return false, ErrNotImplemented
+}
+
+func (tr *Transport) IsConnectionOpen() (bool, error) {
+	return false, ErrNotImplemented
+}
+
 // Send is not available in the HTTP transport.
 func (tr *Transport) Send(ctx context.Context, msg *common.Message) error {
 	return ErrNotImplemented
