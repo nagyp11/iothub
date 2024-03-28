@@ -161,7 +161,7 @@ func (c *Client) IsConnected() (bool, error) {
 
 func (c *Client) IsConnectionOpen() (bool, error) {
 	if c.tr == nil {
-		return true, errors.New("transport is not available")
+		return false, errors.New("transport is not available")
 	}
 	return c.tr.IsConnectionOpen()
 }
