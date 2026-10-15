@@ -31,7 +31,7 @@ func TestParseDirectMethodTopic(t *testing.T) {
 	}
 
 	if m != "add" || r != "666" {
-		t.Errorf("parseDirectMethodTopic(%q) = %q, %q, want %q, %q", s, m, r, "add", 666)
+		t.Errorf("parseDirectMethodTopic(%q) = %q, %q, want %q, %d", s, m, r, "add", 666)
 	}
 }
 

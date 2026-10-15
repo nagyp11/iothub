@@ -453,7 +453,7 @@ func (tr *Transport) subTwinResponses(ctx context.Context) subFunc {
 					}
 					return
 				}
-				tr.logger.Warnf("unknown rid: %q", rid)
+				tr.logger.Warnf("unknown rid: %d", rid)
 			},
 		))
 	}
